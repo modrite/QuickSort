@@ -31,7 +31,7 @@ public class QuickSort {
         }
     }
 
-    // to determine location of the pivot
+    // to determine location of the pivot ->
     public long medianOf3(int left, int right) {
         int center = (left + right) / 2;
         if (data[left] > data[center])
@@ -66,7 +66,7 @@ public class QuickSort {
     public void simpleSort(int left, int right) {
         int size = right - left + 1;
         if (size <= 1)
-            return; // don't bother
+            return;
         if (size == 2) {
             if (data[left] > data[right])
                 swap(left, right);
@@ -92,19 +92,18 @@ public class QuickSort {
         len++;
     }
 
-// to display data
+    // to display data
     public void display() {
-        System.out.print("\nData:\n");
         for (int j = 0; j < len; j++)
             System.out.print(data[j] + " ");
-        System.out.println("\n");
+        System.out.println("");
     }
 
-
+    // main method
     public static void main(String[] args) {
 
-        Random rand = new Random();
-        int[] array = new int[500];
+        Random rand = new Random(); // to be able to generate random numbers
+        int[] array = new int[150]; // here you can select how many numbers you want to print
 
         for (int i = 0; i < array.length; i++) {
             array[i] = rand.nextInt(999);
@@ -113,29 +112,31 @@ public class QuickSort {
         QuickSort arr = new QuickSort(array.length); // init array
 
         int n;
-        for (int i = 0; i < array.length; i++)  // convert and fill array
-        {
-            n = array[i];
+        // convert and fill array
+        for (int j : array) {
+            n = j;
             arr.insert(n);
         }
 
+        System.out.println("\nUnsorted numbers: ");
         // display unsorted numbers (the original array)
-//        arr.display();  // uncomment the line in order to display data on the console
+        arr.display();
 
-        /** Start Timer **/
+        // Start Timer
         long firstNs = System.nanoTime();
 
-        /** QuickSort execute **/
+        // QuickSort execute
         arr.quickSort();
 
-        /** Stop Timer **/
+        // Stop Timer
         long lastNs = System.nanoTime();
 
+        System.out.println("\nSorted numbers: ");
         // display sorted numbers
-//        arr.display();  // uncomment the line in order to display data on the console
+        arr.display();
 
         long timeNs = lastNs - firstNs;
-        System.out.println("\n Using a QuickSort algorithm on an array of " + array.length +
+        System.out.println("\nIn order to sort data in ascending order using a QuickSort algorithm on an array of " + array.length +
                 " unordered numbers required the following amount of time: " + timeNs + " nanoseconds");
     }
 
